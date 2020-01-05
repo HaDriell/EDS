@@ -7,15 +7,37 @@ public class Raycaster : MonoBehaviour
     [SerializeField] private Transform source;
     [SerializeField] private float range;
 
-    private IInteractable target;
-
-    private void SetTarget(IInteractable target)
+    private GameObject target;
+    public GameObject Target
     {
-        if (this.target != target)
+        get 
         {
-            if (this.target != null) this.target.OnEndHover();
-            this.target = target;
-            if (this.target != null) this.target.OnStartHover();
+            return target; 
+        }
+
+        private set
+        {
+            EndTargetHover();
+            target = value;
+            StartTargetHover();
+        }
+    }
+
+    private void EndTargetHover()
+    {
+        if (!target) return;
+        foreach(IInteractable components in target.GetComponents(typeof(IInteractable)))
+        {
+            components.OnEndHover();
+        }
+    }
+
+    private void StartTargetHover()
+    {
+        if (!target) return;
+        foreach (IInteractable components in target.GetComponents(typeof(IInteractable)))
+        {
+            components.OnStartHover();
         }
     }
 
@@ -23,17 +45,8 @@ public class Raycaster : MonoBehaviour
     {
         Ray ray = new Ray(source.position, source.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, range))
-        {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-
-            if (interactable != null && interactable.MaxRange >= hit.distance)
-            {
-                SetTarget(interactable);
-            }
-            else
-            {
-                SetTarget(null);
-            }
-        }
+            Target = hit.collider.gameObject;
+        else
+            Target = null;
     }
 }
