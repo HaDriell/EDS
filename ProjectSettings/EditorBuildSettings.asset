@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Asset Romain/SCENE/fijord.unity
+    guid: 62819659dd4ed7942891b035766bddaf
   m_configObjects: {}

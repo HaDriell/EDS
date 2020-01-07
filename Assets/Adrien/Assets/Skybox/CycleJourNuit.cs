@@ -10,6 +10,8 @@ public class CycleJourNuit : MonoBehaviour
     public float dureeCycle;
     [Range(0, 30)]
     public float indiceSaison;
+    [SerializeField]
+    protected float offsetHeure;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class CycleJourNuit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float angleSolaire = ((Time.time / (dureeCycle * 60)) % 1) * 360;
+        float angleSolaire = (((Time.time + offsetHeure * 60) / (dureeCycle * 60)) % 1) * 360;
         transform.eulerAngles = new Vector3(angleSolaire, indiceSaison, 0);
         if (angleSolaire < 180)
         {

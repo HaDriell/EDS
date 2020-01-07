@@ -139,6 +139,13 @@ public class Inventory : MonoBehaviour
         return removedTotal;
     }
 
+    public ItemStack GetItemStack(int slot)
+    {
+        if (slot >= itemStacks.Length)
+            return null;
+        return itemStacks[slot];
+    }
+
     public bool IsFull()
     {
         foreach (ItemStack stack in itemStacks)

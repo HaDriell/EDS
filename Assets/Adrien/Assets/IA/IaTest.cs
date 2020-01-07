@@ -14,7 +14,7 @@ public class IaTest : MonoBehaviour
     public float tempsPoursuite = 10;
     protected Vector3 positionDepart;
 
-    protected FPS_Controller cible;
+    protected GameObject cible;
     protected NavMeshAgent agent;
     protected Vector3 derniereDirectionConnue;
     protected bool isRandomPath = false;
@@ -23,7 +23,7 @@ public class IaTest : MonoBehaviour
     void Start()
     {
         //tip 1 : pour retrouver une variable : select + f12.
-        cible = FindObjectOfType<FPS_Controller>();
+        cible = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
         positionDepart = this.transform.position;
 
@@ -75,7 +75,7 @@ public class IaTest : MonoBehaviour
                     if (touche.transform == cible.transform)
                     {
                         resultat = true;
-                        derniereDirectionConnue = (cible.transform.position + cible.direction) - transform.position;
+                        derniereDirectionConnue = cible.transform.position - transform.position;
                         CancelInvoke("deplacementAléatoire");
                         isRandomPath = false;
                     }

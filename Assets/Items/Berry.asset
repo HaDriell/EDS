@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de5e86eadf1e6d4689e562153e474d7, type: 3}
+  m_Name: Berry
+  m_EditorClassIdentifier: 
+  name: Berry
+  decription: Bruh
+  maxStack: 64
+  consumable: 0
+  icon: {fileID: 21300000, guid: 2dd5c9073f433e94884652e629bee80a, type: 3}
